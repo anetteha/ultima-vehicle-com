@@ -30,6 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PowerAssert">
+      <HintPath>..\packages\Simple.Testing.3.0.0.0\lib\PowerAssert.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.Testing.ClientFramework">
+      <HintPath>..\packages\Simple.Testing.3.0.0.0\lib\Simple.Testing.ClientFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.Testing.Framework">
+      <HintPath>..\packages\Simple.Testing.3.0.0.0\lib\Simple.Testing.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,7 +48,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Example.cs" />
+    <Compile Include="VehicleMessageHandlerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Contracts\Ultima.Vehicle.Contracts.csproj">
+      <Project>{E6F86AB4-8B51-47D4-A10C-73618C0BC149}</Project>
+      <Name>Ultima.Vehicle.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ultima.Vehicle\Ultima.Vehicle.csproj">
+      <Project>{49f15e5a-ab53-4dfd-8541-f0ee2bd6bfd9}</Project>
+      <Name>Ultima.Vehicle</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

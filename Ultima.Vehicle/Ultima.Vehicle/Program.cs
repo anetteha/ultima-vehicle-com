@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ultima.Vehicle
+﻿namespace Ultima.Vehicle
 {
     class Program
     {
         static void Main(string[] args)
         {
+            new VehicleMessageHandler().Initialize();
         }
     }
 }
