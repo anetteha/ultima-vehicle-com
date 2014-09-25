@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultima.Vehicle", "Ultima.Vehicle\Ultima.Vehicle.csproj", "{49F15E5A-AB53-4DFD-8541-F0EE2BD6BFD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultima.Vehicle.Service.Test", "Ultima.Vehicle.Test\Ultima.Vehicle.Service.Test.csproj", "{DFCF01D4-7AA0-44E0-A6F1-AC48C91E3D57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultima.Vehicle.Test", "Ultima.Vehicle.Test\Ultima.Vehicle.Test.csproj", "{DFCF01D4-7AA0-44E0-A6F1-AC48C91E3D57}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultima.Vehicle.Contracts", "Contracts\Ultima.Vehicle.Contracts.csproj", "{E6F86AB4-8B51-47D4-A10C-73618C0BC149}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultima.Vehicle.Messages", "Contracts\Ultima.Vehicle.Messages.csproj", "{E6F86AB4-8B51-47D4-A10C-73618C0BC149}"
 EndProject
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "AzureGnatMQ", "AzureGnatMQ\AzureGnatMQ\AzureGnatMQ.ccproj", "{CDD005D8-DB95-4DF5-94FD-EEB846FA25A0}"
 EndProject
@@ -17,16 +15,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MqttBroker", "AzureGnatMQ\M
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureMqtt", "AzureMqtt", "{4D305982-D63C-4ADF-A815-9E28296C91AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultima.Vehicle.Service", "Ultima.Vehicle.Service\Ultima.Vehicle.Service.csproj", "{1111348C-FCF2-4E64-A3FE-C42967A3CCFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{49F15E5A-AB53-4DFD-8541-F0EE2BD6BFD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49F15E5A-AB53-4DFD-8541-F0EE2BD6BFD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49F15E5A-AB53-4DFD-8541-F0EE2BD6BFD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49F15E5A-AB53-4DFD-8541-F0EE2BD6BFD9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DFCF01D4-7AA0-44E0-A6F1-AC48C91E3D57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DFCF01D4-7AA0-44E0-A6F1-AC48C91E3D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFCF01D4-7AA0-44E0-A6F1-AC48C91E3D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,6 +43,10 @@ Global
 		{4EBFA6E5-0636-496C-8C46-991B05DF7491}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EBFA6E5-0636-496C-8C46-991B05DF7491}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EBFA6E5-0636-496C-8C46-991B05DF7491}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1111348C-FCF2-4E64-A3FE-C42967A3CCFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1111348C-FCF2-4E64-A3FE-C42967A3CCFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1111348C-FCF2-4E64-A3FE-C42967A3CCFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1111348C-FCF2-4E64-A3FE-C42967A3CCFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,7 @@
 ﻿using Simple.Testing.ClientFramework;
-using Ultima.Vehicle.Contracts;
+using Ultima.Vehicle.Messages;
 
-namespace Ultima.Vehicle.Test
+namespace Ultima.Vehicle.Service.Test
 {
     public class VehicleMessageHandlerTest
     {
@@ -9,7 +9,7 @@ namespace Ultima.Vehicle.Test
         {
             //Before = ()=> ; //TODO check if vehicle exists
             On = () => new VehicleMessageHandler(),
-            When = messageHandler => messageHandler.Handle(new NewVehicleMessage()),
+            When = messageHandler => messageHandler.Handle(new EndVehicleRentalCommand()),
             Expect = { }
             /*
              When = account => account.Deposit(new Money(50)),
