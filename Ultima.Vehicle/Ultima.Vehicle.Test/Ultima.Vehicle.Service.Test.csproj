@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ultima.Vehicle.Messages\Ultima.Vehicle.Messages.csproj">
+      <Project>{E6F86AB4-8B51-47D4-A10C-73618C0BC149}</Project>
+      <Name>Ultima.Vehicle.Messages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ultima.Vehicle.Service\Ultima.Vehicle.Service.csproj">
       <Project>{1111348C-FCF2-4E64-A3FE-C42967A3CCFB}</Project>
       <Name>Ultima.Vehicle.Service</Name>

@@ -56,6 +56,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ultima.Vehicle.Messages\Ultima.Vehicle.Messages.csproj">
+      <Project>{E6F86AB4-8B51-47D4-A10C-73618C0BC149}</Project>
+      <Name>Ultima.Vehicle.Messages</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
