@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DFCF01D4-7AA0-44E0-A6F1-AC48C91E3D57}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{905BD413-82EC-4A08-9B0A-91A9C88016B6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ultima.Vehicle.Service.Test</RootNamespace>
-    <AssemblyName>Ultima.Vehicle.Service.Test</AssemblyName>
+    <RootNamespace>TestCarsClient</RootNamespace>
+    <AssemblyName>TestCarsClient</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,19 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NServiceBus, Version=4.6.5.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.Interfaces.4.6.5\lib\net40\NServiceBus.dll</HintPath>
-    </Reference>
-    <Reference Include="PowerAssert">
-      <HintPath>..\packages\Simple.Testing.3.0.0.0\lib\PowerAssert.dll</HintPath>
-    </Reference>
-    <Reference Include="Simple.Testing.ClientFramework">
-      <HintPath>..\packages\Simple.Testing.3.0.0.0\lib\Simple.Testing.ClientFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Simple.Testing.Framework">
-      <HintPath>..\packages\Simple.Testing.3.0.0.0\lib\Simple.Testing.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,21 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Example.cs" />
-    <Compile Include="VehicleMessageHandlerTest.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Contracts\Ultima.Vehicle.Messages.csproj">
-      <Project>{E6F86AB4-8B51-47D4-A10C-73618C0BC149}</Project>
-      <Name>Ultima.Vehicle.Messages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ultima.Vehicle.Service\Ultima.Vehicle.Service.csproj">
-      <Project>{1111348C-FCF2-4E64-A3FE-C42967A3CCFB}</Project>
-      <Name>Ultima.Vehicle.Service</Name>
+    <ProjectReference Include="..\AzureGnatMQ\MqttBroker\MqttBroker.csproj">
+      <Project>{4ebfa6e5-0636-496c-8c46-991b05df7491}</Project>
+      <Name>MqttBroker</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
