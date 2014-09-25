@@ -1,15 +1,15 @@
 ﻿using Simple.Testing.ClientFramework;
-using Ultima.Vehicle.Contracts;
+using Ultima.Vehicle.Messages;
 
-namespace Ultima.Vehicle.Test
+namespace Ultima.Vehicle.Service.Test
 {
     public class VehicleMessageHandlerTest
     {
-        public Specification when_recieving_a_register_new_vehicle_message = new ActionSpecification<VehicleMessageHandler>
+        public Specification when_recieving_a_register_new_vehicle_message = new ActionSpecification<StartVehicleRentalCommandHandler>
         {
             //Before = ()=> ; //TODO check if vehicle exists
-            On = () => new VehicleMessageHandler(),
-            When = messageHandler => messageHandler.Handle(new NewVehicleMessage()),
+            On = () => new StartVehicleRentalCommandHandler(),
+            When = messageHandler => messageHandler.Handle(new StartVehicleRentalCommand()),
             Expect = { }
             /*
              When = account => account.Deposit(new Money(50)),
