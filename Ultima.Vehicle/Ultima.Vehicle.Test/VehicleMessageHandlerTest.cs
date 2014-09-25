@@ -5,10 +5,10 @@ namespace Ultima.Vehicle.Service.Test
 {
     public class VehicleMessageHandlerTest
     {
-        public Specification when_recieving_a_register_new_vehicle_message = new ActionSpecification<StartVehicleRentalCommandHandler>
+        public Specification when_recieving_a_register_new_vehicle_message = new ActionSpecification<RentAVehicleSaga>
         {
             //Before = ()=> ; //TODO check if vehicle exists
-            On = () => new StartVehicleRentalCommandHandler(),
+            On = () => new RentAVehicleSaga(),
             When = messageHandler => messageHandler.Handle(new StartVehicleRentalCommand()),
             Expect = { }
             /*

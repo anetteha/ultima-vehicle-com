@@ -1,6 +1,9 @@
-﻿namespace Ultima.Vehicle.Messages
+﻿using NServiceBus;
+
+namespace Ultima.Vehicle.Messages
 {
-    public class EndVehicleRentalCommand
+    public class EndVehicleRentalCommand : ICommand
     {
+        public string Id { get; set; }
     }
 }
