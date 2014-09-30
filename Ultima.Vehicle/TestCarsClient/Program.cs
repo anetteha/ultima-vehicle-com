@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 
@@ -11,45 +10,80 @@ namespace TestCarsClient
 {
     class Program
     {
-        static void Main(string[] args)
+        private static MqttClient _client;
+        private static readonly string[] Topic = { "car/status"};
+
+        static void Main()
         {
-            
+            Console.WriteLine("Start test client");
+            Start();
+            Console.WriteLine("Send message from client to server");
+            SendMessage();
+            Console.WriteLine("Press enter key to quit");
+            Console.ReadLine();
+            End();
         }
 
-        public void Start()
+        private static void SendMessage()
+        {
+            var temp = Convert.ToString("This is the message");
+            _client.Publish("car/status", Encoding.UTF8.GetBytes(temp));
+        }
+
+        private static void End()
+        {
+            _client.Unsubscribe(Topic);
+        }
+
+        public static void Start()
         {
             ////http://m2mqtt.wordpress.com/using-mqttclient/
+            ////http://3b5a813b11ad469faa02babc0a6edb45.cloudapp.net/
+            ////Same as:
+            ////137.135.201.38
 
-            MqttClient client = new MqttClient("http://3b5a813b11ad469faa02babc0a6edb45.cloudapp.net/");
+            _client = new MqttClient("137.135.201.38");
 
-            client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;     
-            client.MqttMsgSubscribed += client_MqttMsgSubscribed;
-            client.MqttMsgUnsubscribed += client_MqttMsgUnsubscribed;
-            client.MqttMsgPublished += client_MqttMsgPublished;
+            _client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;     
+            _client.MqttMsgSubscribed += client_MqttMsgSubscribed;
+            _client.MqttMsgUnsubscribed += client_MqttMsgUnsubscribed;
+            _client.MqttMsgPublished += client_MqttMsgPublished;
+
+
+            byte[] qosLevels = { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE };
+            var grantedQos = _client.Subscribe(Topic, qosLevels);
+
+            Console.WriteLine("Connect to server...");
+
+            var state = _client.Connect("ABC12345", "guest", "guest", false, 0, false, null, null, true, 60);
+
+            //_client.Connect(Guid.NewGuid().ToString());
+
+            Console.WriteLine("Connected!");
         }
 
-        private void client_MqttMsgPublished(object sender, MqttMsgPublishedEventArgs e)
+        private static void client_MqttMsgPublished(object sender, MqttMsgPublishedEventArgs e)
         {
-            throw new NotImplementedException();
             // write your code
+            Console.WriteLine("Message will be delivered (exactly once) to all subscribers on the topic");
         }
 
-        private void client_MqttMsgUnsubscribed(object sender, MqttMsgUnsubscribedEventArgs e)
+        private static void client_MqttMsgUnsubscribed(object sender, MqttMsgUnsubscribedEventArgs e)
         {
-            throw new NotImplementedException();
             // write your code
+            Console.WriteLine("Subscription unregistered at broker in Azure");
         }
 
-        private void client_MqttMsgSubscribed(object sender, MqttMsgSubscribedEventArgs e)
+        private static void client_MqttMsgSubscribed(object sender, MqttMsgSubscribedEventArgs e)
         {
-            throw new NotImplementedException();
             // write your code
+            Console.WriteLine("Subscription registered at broker in Azure");
         }
 
-        private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+        private static void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
-            throw new NotImplementedException();
             // access data bytes throug e.Message
+            Console.WriteLine("A message is published on a topic the client is subscribed to");
         }
     }
 }
