@@ -48,7 +48,7 @@ namespace Ultima.Vehicle.Service
                 Bus.Publish(new VehicleRenterQualifiedFor360ViewEvent { Id = message.Id });
             }
                 
-            Console.WriteLine("Vehicle with Id {0} has mileage:{1}", message.Id, message.Mileage);
+            Console.WriteLine("Vehicle with Id {0} has mileage:{1}", message.Id, Data.Mileage);
             Console.WriteLine("Vehicle with Id {0} has mileage since last status check:{1}", message.Id, message.MilesSinceLastStatusCheck);
         }
     }
