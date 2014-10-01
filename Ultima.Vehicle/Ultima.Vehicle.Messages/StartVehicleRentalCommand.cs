@@ -7,6 +7,8 @@ namespace Ultima.Vehicle.Messages
         /// <summary>
         /// Vehicle Identification Number
         /// </summary>
-        public string Id { get; set; } 
+        public string Id { get; set; }
+
+        public int InitialMilage { get; set; }
     }
 }

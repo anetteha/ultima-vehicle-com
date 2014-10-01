@@ -51,6 +51,7 @@
     <Compile Include="SendVehicleMessages.cs" />
     <Compile Include="EndpointConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VehicleRenterQualifiedFor360ViewEventHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

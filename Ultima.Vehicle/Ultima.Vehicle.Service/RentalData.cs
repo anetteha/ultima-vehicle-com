@@ -10,5 +10,11 @@ namespace Ultima.Vehicle.Service
         public string OriginalMessageId { get; set; }
         public string BusinessId { get; set; }
         public int Mileage { get; set; }
+        public bool Vip { get; set; }
+        public bool BrakesNeedService { get; set; }
+        public int MilesSinceLastStatusCheck { get; set; }
+        public int NumberOfStatusChecks { get; set; }
+        public int TotalMilageUsedWhileRented { get; set; }
+        public int MileageWhenReturned { get; set; }
     }
 }
