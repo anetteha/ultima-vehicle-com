@@ -8,9 +8,9 @@ namespace Ultima.Vehicle.Client
 {
     public class SendVehicleMessages : IWantToRunWhenBusStartsAndStops
     {
-        private readonly List<Guid> _vehicleIds = new List<Guid>();
+        private readonly List<KeyValuePair<string, int>> _vehicles = new List<KeyValuePair<string, int>>();
         public IBus Bus { get; set; }
-        private Random _random = new Random(1000);
+        private readonly Random _random = new Random(1000);
 
         public void Start()
         {
@@ -18,7 +18,7 @@ namespace Ultima.Vehicle.Client
             string input;
             while ((input = Console.ReadLine()) != null)
             {
-                if (!_vehicleIds.Any())
+                if (!_vehicles.Any())
                 {
                     SendStartRental();
                 }
@@ -59,13 +59,13 @@ namespace Ultima.Vehicle.Client
             VehicleStatusCheckedEvent driverType;
             do
             {
-                driverType = GetDriverTypeFromUser(_vehicleIds[index].ToString());
+                driverType = GetDriverTypeFromUser(_vehicles[index]);
                 if (driverType != null)
                     Bus.Publish(driverType);
             } while (driverType != null);
         }
 
-        private static VehicleStatusCheckedEvent GetDriverTypeFromUser(string id)
+        private VehicleStatusCheckedEvent GetDriverTypeFromUser(KeyValuePair<string, int> vehicle)
         {
             do
             {
@@ -83,19 +83,30 @@ namespace Ultima.Vehicle.Client
                     case "0":
                         return null;
                     case "1":
-                        return new VehicleStatusCheckedEvent { Id = id, BrakesNeedService = false, MilesSinceLastStatusCheck = 10 };
+                        UpdateVehicleMileage(vehicle, 10);
+                        return new VehicleStatusCheckedEvent { Id = vehicle.Key, BrakesNeedService = false, MilesSinceLastStatusCheck = 10 };
                     case "2":
-                        return new VehicleStatusCheckedEvent { Id = id, BrakesNeedService = false, MilesSinceLastStatusCheck = 50 };
+                        UpdateVehicleMileage(vehicle, 50);
+                        return new VehicleStatusCheckedEvent { Id = vehicle.Key, BrakesNeedService = false, MilesSinceLastStatusCheck = 50 };
                     case "3":
-                        return new VehicleStatusCheckedEvent { Id = id, BrakesNeedService = false, MilesSinceLastStatusCheck = 100 };
+                        UpdateVehicleMileage(vehicle, 100);
+                        return new VehicleStatusCheckedEvent { Id = vehicle.Key, BrakesNeedService = false, MilesSinceLastStatusCheck = 100 };
                     case "4":
-                        return new VehicleStatusCheckedEvent { Id = id, BrakesNeedService = false, MilesSinceLastStatusCheck = 10000 };
+                        UpdateVehicleMileage(vehicle, 10000);
+                        return new VehicleStatusCheckedEvent { Id = vehicle.Key, BrakesNeedService = false, MilesSinceLastStatusCheck = 10000 };
                     case "5":
+                        UpdateVehicleMileage(vehicle, 666);
                         Console.WriteLine("COME ON, FOLKENS!!");
                         Console.ReadLine();
-                        return new VehicleStatusCheckedEvent { Id = id, Vip = true, BrakesNeedService = false, MilesSinceLastStatusCheck = 666 };
+                        return new VehicleStatusCheckedEvent { Id = vehicle.Key, Vip = true, BrakesNeedService = false, MilesSinceLastStatusCheck = 666 };
                 }
             } while (true);
+        }
+
+        private void UpdateVehicleMileage(KeyValuePair<string, int> vehicle, int mileageToAdd)
+        {
+            var indexOf = _vehicles.IndexOf(vehicle);
+            _vehicles[indexOf] = new KeyValuePair<string, int>(vehicle.Key, vehicle.Value + mileageToAdd);
         }
 
         private void SendReturnVehicle(string stringIndex)
@@ -103,15 +114,15 @@ namespace Ultima.Vehicle.Client
             var index = GetIndex(stringIndex);
             if (index == -1) return;
 
-            Bus.Send("Ultima.Vehicle.Service", new EndVehicleRentalCommand { Id = _vehicleIds[index].ToString(), MileageWhenReturned = _random.Next(50000, 200000) });
-            _vehicleIds.Remove(_vehicleIds[index]);
+            Bus.Send("Ultima.Vehicle.Service", new EndVehicleRentalCommand { Id = _vehicles[index].Key, MileageWhenReturned = _vehicles[index].Value + _random.Next(10, 1000) });
+            _vehicles.Remove(_vehicles[index]);
         }
 
         private int GetIndex(string stringIndex)
         {
             int index;
             int.TryParse(stringIndex, out index);
-            if (index != 0 && index <= _vehicleIds.Count) return index - 1;
+            if (index != 0 && index <= _vehicles.Count) return index - 1;
 
             Console.WriteLine("Vehicle number does not exist.");
             return -1;
@@ -120,7 +131,7 @@ namespace Ultima.Vehicle.Client
         private void PrintMenu()
         {
             Console.WriteLine("==========================================================================");
-            Console.WriteLine("Number of Vehicles Rented: {0}", _vehicleIds.Count);
+            Console.WriteLine("Number of Vehicles Rented: {0}", _vehicles.Count);
             Console.WriteLine("1: Rent new Vehicle");
             Console.WriteLine("2 #: Return Vehicle");
             Console.WriteLine("3 #: Send Status Update on Vehicle #");
@@ -128,11 +139,17 @@ namespace Ultima.Vehicle.Client
 
         private void SendStartRental()
         {
-            var id = Guid.NewGuid();
-            Bus.Send("Ultima.Vehicle.Service", new StartVehicleRentalCommand { Id = id.ToString(), InitialMilage = _random.Next(3000, 150000) });
-            _vehicleIds.Add(id);
+            var id = GetNextRentalId();
+            var startMileage = _random.Next(3000, 150000);
+            Bus.Send("Ultima.Vehicle.Service", new StartVehicleRentalCommand { Id = id, InitialMilage = startMileage });
+            _vehicles.Add(new KeyValuePair<string, int>(id, startMileage));
             Console.WriteLine("==========================================================================");
-            Console.WriteLine("Sendt a new StartVehicleRentalCommand message with id: {0}", id.ToString("N"));
+            Console.WriteLine("Sendt a new StartVehicleRentalCommand message with vehicle: {0}", id);
+        }
+
+        private string GetNextRentalId()
+        {
+            return "RENTAL_VIN_" + _vehicles.Count;
         }
 
         public void Stop()
