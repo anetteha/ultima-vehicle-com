@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultima.Vehicle.Service.Test", "Ultima.Vehicle.Test\Ultima.Vehicle.Service.Test.csproj", "{DFCF01D4-7AA0-44E0-A6F1-AC48C91E3D57}"
-EndProject
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "AzureGnatMQ", "AzureGnatMQ\AzureGnatMQ\AzureGnatMQ.ccproj", "{CDD005D8-DB95-4DF5-94FD-EEB846FA25A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GnatMQWorkerRole", "AzureGnatMQ\GnatMQWorkerRole\GnatMQWorkerRole.csproj", "{B947DE27-45F2-4604-AFB0-61551117C2E5}"
@@ -29,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DFCF01D4-7AA0-44E0-A6F1-AC48C91E3D57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFCF01D4-7AA0-44E0-A6F1-AC48C91E3D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFCF01D4-7AA0-44E0-A6F1-AC48C91E3D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFCF01D4-7AA0-44E0-A6F1-AC48C91E3D57}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CDD005D8-DB95-4DF5-94FD-EEB846FA25A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CDD005D8-DB95-4DF5-94FD-EEB846FA25A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDD005D8-DB95-4DF5-94FD-EEB846FA25A0}.Release|Any CPU.ActiveCfg = Release|Any CPU

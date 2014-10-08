@@ -8,6 +8,7 @@ namespace Ultima.Vehicle.Service
         public Guid Id { get; set; }
         public string Originator { get; set; }
         public string OriginalMessageId { get; set; }
+        [Unique] 
         public string BusinessId { get; set; }
         public int Mileage { get; set; }
         public bool Vip { get; set; }

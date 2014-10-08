@@ -11,11 +11,11 @@ namespace Ultima.Vehicle.Service
         IHandleMessages<EndVehicleRentalCommand>,
         IHandleMessages<VehicleStatusCheckedEvent>
     {
-        public override void ConfigureHowToFindSaga()
+        protected override void ConfigureHowToFindSaga(SagaPropertyMapper<RentalData> mapper)
         {
-            ConfigureMapping<StartVehicleRentalCommand>(m => m.Id).ToSaga(s => s.BusinessId);
-            ConfigureMapping<VehicleStatusCheckedEvent>(m => m.Id).ToSaga(s => s.BusinessId);
-            ConfigureMapping<EndVehicleRentalCommand>(m => m.Id).ToSaga(s => s.BusinessId);
+            mapper.ConfigureMapping<StartVehicleRentalCommand>(m => m.Id).ToSaga(s => s.BusinessId);
+            mapper.ConfigureMapping<VehicleStatusCheckedEvent>(m => m.Id).ToSaga(s => s.BusinessId);
+            mapper.ConfigureMapping<EndVehicleRentalCommand>(m => m.Id).ToSaga(s => s.BusinessId);
         }
 
         public void Handle(StartVehicleRentalCommand message)
@@ -51,5 +51,6 @@ namespace Ultima.Vehicle.Service
             Console.WriteLine("Vehicle with Id {0} has mileage:{1}", message.Id, Data.Mileage);
             Console.WriteLine("Vehicle with Id {0} has mileage since last status check:{1}", message.Id, message.MilesSinceLastStatusCheck);
         }
+
     }
 }
