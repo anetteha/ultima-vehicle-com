@@ -1,4 +1,5 @@
 
+using System.Linq;
 using NServiceBus.Persistence;
 using Raven.Client.Document;
 
@@ -11,7 +12,7 @@ namespace Ultima.Vehicle.Service
 		can be found here: http://particular.net/articles/the-nservicebus-host
 	*/
 	public class EndpointConfig : IConfigureThisEndpoint, AsA_Server, UsingTransport<RabbitMQTransport>
-	{
+    {
 	    public void Customize(BusConfiguration configuration)
 	    {
             configuration.UseTransport<RabbitMQTransport>();
@@ -22,6 +23,11 @@ namespace Ultima.Vehicle.Service
                 DefaultDatabase = "ultima.vehicle"
             };
             configuration.UsePersistence<RavenDBPersistence>().SetDefaultDocumentStore(documentStore);
+            configuration.RijndaelEncryptionService();
+            configuration.Conventions().DefiningEncryptedPropertiesAs(type =>
+                type.PropertyType.Name == "WireEncryptedString" ||
+                type.GetCustomAttributes(true)
+                    .Any(t => t.GetType().Name == "UltimaEncryptionAttribute"));
 	    }
     }
 }
