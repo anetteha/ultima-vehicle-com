@@ -149,7 +149,7 @@ namespace Ultima.Vehicle.Client
 
         private string GetNextRentalId()
         {
-            return "RENTAL_VIN_" + _vehicles.Count;
+            return "RENTAL_VIN_" + (_vehicles.Count + 1);
         }
 
         public void Stop()

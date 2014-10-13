@@ -46,6 +46,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartVehicleRentalCommand.cs" />
     <Compile Include="UltimaEncryptionAttribute.cs" />
+    <Compile Include="VehicleIsRentedEvent.cs" />
+    <Compile Include="VehicleIsReturnedEvent.cs" />
     <Compile Include="VehicleRenterQualifiedFor360ViewEvent.cs" />
     <Compile Include="VehicleStatusCheckedEvent.cs" />
   </ItemGroup>

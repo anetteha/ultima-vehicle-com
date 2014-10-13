@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultima.Vehicle.Messages", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultima.Vehicle.Client", "Ultima.Vehicle.Client\Ultima.Vehicle.Client.csproj", "{54F1A6CC-7D7E-4816-8EC4-475910A43696}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steria.Rentals.CustomerService", "Steria.Rentals.CustomerService\Steria.Rentals.CustomerService.csproj", "{12E83C0A-09D9-4826-9C27-07EF508265A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{54F1A6CC-7D7E-4816-8EC4-475910A43696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54F1A6CC-7D7E-4816-8EC4-475910A43696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54F1A6CC-7D7E-4816-8EC4-475910A43696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12E83C0A-09D9-4826-9C27-07EF508265A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12E83C0A-09D9-4826-9C27-07EF508265A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12E83C0A-09D9-4826-9C27-07EF508265A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12E83C0A-09D9-4826-9C27-07EF508265A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
