@@ -6,7 +6,7 @@ To run this project you need to install the following:
   2. Erlang: http://www.erlang.org/download/otp_win64_17.3.exe
   3. RabbitMQ Server: https://www.rabbitmq.com/releases/rabbitmq-server/v3.3.5/rabbitmq-server-3.3.5.exe
   4. RavenDB: http://hibernatingrhinos.com/downloads/RavenDB/2935
-      a. Choose port 8081
+      \na. Choose port 8081
       b. Make sure you have permission to write in the install folder
   
 Good luck!
